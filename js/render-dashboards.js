@@ -1,10 +1,18 @@
 /**
- * Naturals Bridal: Hub Owner & HQ Dashboards Renderer
+ * Naturals Bridal: Complete Hub Owner & HQ Dashboards Renderer
  */
 window.NaturalsApp = window.NaturalsApp || {};
 
 (function() {
   function renderHubDashboard(state) {
+    const calendarDays = [
+      { d: 1, peak: false }, { d: 2, peak: false }, { d: 3, peak: false }, { d: 4, peak: false }, { d: 5, peak: false }, { d: 6, peak: false }, { d: 7, peak: false },
+      { d: 8, peak: true, booked: true }, { d: 9, peak: false }, { d: 10, peak: false }, { d: 11, peak: false }, { d: 12, peak: false }, { d: 13, peak: false },
+      { d: 14, peak: true, booked: true }, { d: 15, peak: false }, { d: 16, peak: false }, { d: 17, peak: false }, { d: 18, peak: false }, { d: 19, peak: true, booked: false },
+      { d: 20, peak: false }, { d: 21, peak: false }, { d: 22, peak: false }, { d: 23, peak: false }, { d: 24, peak: false }, { d: 25, peak: false }, { d: 26, peak: false },
+      { d: 27, peak: true, booked: false }, { d: 28, peak: false }, { d: 29, peak: false }, { d: 30, peak: false }, { d: 31, peak: false }
+    ];
+
     return `
       <div class="desktop-dashboard-view">
         <div class="dashboard-header">
@@ -55,45 +63,124 @@ window.NaturalsApp = window.NaturalsApp || {};
           </div>
         </div>
 
+        <!-- December Calendar with Shaded Peak Dates -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--ink);">December 2026 — Muhurat Calendar & Bench Capacity</h3>
+            <div style="display: flex; gap: 12px; font-size: 11px;">
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 10px; height: 10px; background: #FFF4E5; border: 1px solid var(--amber); display: inline-block;"></span> Auspicious Muhurat Date</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 10px; height: 10px; background: #E8FBF2; border: 1px solid var(--green); display: inline-block;"></span> Hub Standby Booked</span>
+            </div>
+          </div>
+
+          <div class="month-calendar-grid">
+            <div class="cal-day-header">SUN</div>
+            <div class="cal-day-header">MON</div>
+            <div class="cal-day-header">TUE</div>
+            <div class="cal-day-header">WED</div>
+            <div class="cal-day-header">THU</div>
+            <div class="cal-day-header">FRI</div>
+            <div class="cal-day-header">SAT</div>
+
+            ${calendarDays.map(item => `
+              <div class="cal-day-cell ${item.peak ? 'peak-date' : ''} ${item.booked ? 'booked' : ''}">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>${item.d}</span>
+                  ${item.peak ? '<span class="cal-badge peak">PEAK</span>' : ''}
+                </div>
+                ${item.booked ? '<span class="cal-badge full">CAP 2/2</span>' : (item.peak ? '<span style="font-size:9px; color:var(--soft);">1 slot free</span>' : '')}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
         <!-- Upcoming Trials Table -->
         <div class="card" style="margin-bottom: 24px;">
           <h3 style="font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 14px;">Upcoming Salon Chair Trials</h3>
-          <div style="overflow-x: auto;">
-            <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+          <div class="data-table-wrapper">
+            <table class="data-table">
               <thead>
-                <tr style="border-bottom: 2px solid var(--border); text-align: left; color: var(--soft);">
-                  <th style="padding: 10px 8px;">Date & Time</th>
-                  <th style="padding: 10px 8px;">Bride Name</th>
-                  <th style="padding: 10px 8px;">Calibrated Chair</th>
-                  <th style="padding: 10px 8px;">Assigned Artist</th>
-                  <th style="padding: 10px 8px;">Logged Shade Code</th>
-                  <th style="padding: 10px 8px;">Status</th>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Bride Name</th>
+                  <th>Calibrated Chair</th>
+                  <th>Assigned Artist</th>
+                  <th>Logged Shade Code</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td style="padding: 10px 8px;">Tomorrow 10:30 AM</td>
-                  <td style="padding: 10px 8px; font-weight: 600;">Kavya S.</td>
-                  <td style="padding: 10px 8px;">Chair 2 (5000K daylight)</td>
-                  <td style="padding: 10px 8px;">Ananya M.</td>
-                  <td style="padding: 10px 8px;"><code style="background: var(--paper); padding: 2px 6px; border-radius: 4px;">NAT-O3 Warm</code></td>
-                  <td style="padding: 10px 8px;"><span class="pill pill-locked">CONFIRMED</span></td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td style="padding: 10px 8px;">Tomorrow 02:00 PM</td>
-                  <td style="padding: 10px 8px; font-weight: 600;">Meera R.</td>
-                  <td style="padding: 10px 8px;">Chair 1 (Flash testing)</td>
-                  <td style="padding: 10px 8px;">Kavitha R.</td>
-                  <td style="padding: 10px 8px;"><code style="background: var(--paper); padding: 2px 6px; border-radius: 4px;">NAT-M2 Olive</code></td>
-                  <td style="padding: 10px 8px;"><span class="pill pill-done">READY</span></td>
+                <tr>
+                  <td>Tomorrow 10:30 AM</td>
+                  <td><strong>Kavya & Siddharth</strong></td>
+                  <td>Chair 2 (5000K daylight)</td>
+                  <td>Ananya M.</td>
+                  <td><code style="background: var(--paper); padding: 2px 6px; border-radius: 4px;">NAT-O3 Warm</code></td>
+                  <td><span class="pill pill-locked">CONFIRMED</span></td>
                 </tr>
                 <tr>
-                  <td style="padding: 10px 8px;">Saturday 11:00 AM</td>
-                  <td style="padding: 10px 8px; font-weight: 600;">Pooja V.</td>
-                  <td style="padding: 10px 8px;">Chair 4 (Daylight)</td>
-                  <td style="padding: 10px 8px;">Deepa S.</td>
-                  <td style="padding: 10px 8px;"><em>Pending Chair Test</em></td>
-                  <td style="padding: 10px 8px;"><span class="pill pill-armed">SLOT RESERVED</span></td>
+                  <td>Tomorrow 02:00 PM</td>
+                  <td><strong>Meera R.</strong></td>
+                  <td>Chair 1 (Flash testing)</td>
+                  <td>Kavitha R.</td>
+                  <td><code style="background: var(--paper); padding: 2px 6px; border-radius: 4px;">NAT-M2 Olive</code></td>
+                  <td><span class="pill pill-done">READY</span></td>
+                </tr>
+                <tr>
+                  <td>Saturday 11:00 AM</td>
+                  <td><strong>Pooja V.</strong></td>
+                  <td>Chair 4 (Daylight)</td>
+                  <td>Deepa S.</td>
+                  <td><em>Pending Chair Test</em></td>
+                  <td><span class="pill pill-armed">SLOT RESERVED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Artist Bench Table -->
+        <div class="card">
+          <h3 style="font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 14px;">Hub Artist Bench & Peak-Date Allocation</h3>
+          <div class="data-table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Artist Name</th>
+                  <th>Specialisation</th>
+                  <th>Academy Certification</th>
+                  <th>Peak Date Capping</th>
+                  <th>Standby Duty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ananya M.</strong></td>
+                  <td>HD Airbrush & Floral Pinning</td>
+                  <td><span class="pill pill-done">MASTER CERTIFIED</span></td>
+                  <td>1 / 2 Bookings Used</td>
+                  <td>Dec 08 Standby Lead</td>
+                </tr>
+                <tr>
+                  <td><strong>Divya R.</strong></td>
+                  <td>Bridal Hair & Fast Touch-ups</td>
+                  <td><span class="pill pill-done">SENIOR ARTIST</span></td>
+                  <td>0 / 2 Bookings Used</td>
+                  <td><span class="pill pill-armed">ARMED STANDBY (Dec 14)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Priya S.</strong></td>
+                  <td>Hair Architecture & Veils</td>
+                  <td><span class="pill pill-done">CERTIFIED</span></td>
+                  <td>Full Unit Attached</td>
+                  <td>Unit Support</td>
+                </tr>
+                <tr>
+                  <td><strong>Ramya K.</strong></td>
+                  <td>Kanjeevaram Saree Draping</td>
+                  <td><span class="pill pill-done">CERTIFIED</span></td>
+                  <td>Full Unit Attached</td>
+                  <td>Unit Support</td>
                 </tr>
               </tbody>
             </table>
@@ -109,6 +196,7 @@ window.NaturalsApp = window.NaturalsApp || {};
     const gates = window.NaturalsData.gatesConfig;
     const scenarios = window.NaturalsData.ebitdaScenarios;
     const curScenario = scenarios[hq.scenario] || scenarios.plan;
+    const hubLeague = window.NaturalsData.hubLeague || [];
 
     // Evaluate Gates status at current week
     let stoppedGateCount = 0;
@@ -242,6 +330,46 @@ window.NaturalsApp = window.NaturalsApp || {};
               </div>
             </div>
           `).join('')}
+        </div>
+
+        <!-- Hub League Table -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px;">
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; color: var(--ink);">Hub League Performance Table</h3>
+              <p style="font-size: 12px; color: var(--soft);">Ranked by trial conversion and client satisfaction across certified pilot clusters.</p>
+            </div>
+            <span class="pill pill-sample">ILLUSTRATIVE</span>
+          </div>
+
+          <div class="data-table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Hub Location</th>
+                  <th>Completed Bookings</th>
+                  <th>Trial-to-Booking</th>
+                  <th>On-Time Rate</th>
+                  <th>Client Rating</th>
+                  <th>Performance Tier</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${hubLeague.map(h => `
+                  <tr>
+                    <td><strong>#${h.rank}</strong></td>
+                    <td><strong>${h.name}</strong></td>
+                    <td>${h.bookings}</td>
+                    <td style="color: var(--green-dark); font-weight: 600;">${h.conversion}</td>
+                    <td>${h.onTime}</td>
+                    <td>${h.rating}</td>
+                    <td><span class="pill ${h.status === 'STAR HUB' ? 'pill-locked' : (h.status === 'ON TRACK' ? 'pill-done' : 'pill-armed')}">${h.status}</span></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Year-3 EBITDA Scenario Toggle -->

@@ -52,6 +52,43 @@
         <div class="phone-screen" id="phone-screen-content">
           <!-- Rendered via JS -->
         </div>
+
+        <!-- Interactive Mock Chat Drawer (Slide Up in Phone) -->
+        <div class="chat-drawer" id="chat-drawer">
+          <div class="chat-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="member-avatar" style="width: 32px; height: 32px; font-size: 11px;">SV</div>
+              <div>
+                <strong style="font-size: 13px; color: var(--ink); display: block;">Sneha V.</strong>
+                <span style="font-size: 10px; color: var(--green-dark); font-weight: 600;">● Bridal Desk Coordinator (Online)</span>
+              </div>
+            </div>
+            <button style="background: none; border: none; font-size: 18px; cursor: pointer; color: var(--soft);" onclick="window.NaturalsApp.toggleChatDrawer(false)">✕</button>
+          </div>
+
+          <div class="chat-messages" id="chat-messages-list">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="chat-input-bar">
+            <input type="text" id="chat-user-input" class="upi-input" style="margin-top: 0; font-family: inherit; font-size: 12px;" placeholder="Message Sneha..." onkeydown="if(event.key==='Enter') window.NaturalsApp.sendChatMessage()">
+            <button class="btn btn-primary btn-sm" onclick="window.NaturalsApp.sendChatMessage()">Send</button>
+          </div>
+        </div>
+
+        <!-- Call Desk Modal Simulation -->
+        <div class="modal-overlay" id="desk-call-modal" style="position: absolute; border-radius: 46px;" onclick="if(event.target === this) window.NaturalsApp.closeDeskCall()">
+          <div class="modal-sheet" style="text-align: center; max-width: 300px; padding: 24px 16px;">
+            <div class="member-avatar" style="width: 56px; height: 56px; margin: 0 auto 12px; font-size: 18px; background: var(--green-light); color: var(--green-dark);">📞</div>
+            <h4 style="font-size: 16px; font-weight: 800; color: var(--ink);">Naturals Bridal Central Desk</h4>
+            <div style="font-size: 12px; color: var(--green-dark); font-weight: 600; margin: 4px 0 16px;">Connecting to Coordinator Sneha...</div>
+            <p style="font-size: 11px; color: var(--soft); margin-bottom: 20px;">Dedicated 24/7 Muhurat morning line: +91 98400 12345</p>
+            <button class="btn btn-block btn-sm" style="background: var(--red); color: white;" onclick="window.NaturalsApp.closeDeskCall()">
+              End Call
+            </button>
+          </div>
+        </div>
+
       </div>
 
       <!-- Desktop Dashboard Container (Hub Owner & Naturals HQ Roles) -->

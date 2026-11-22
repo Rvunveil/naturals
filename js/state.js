@@ -1,15 +1,15 @@
 /**
- * Naturals Bridal: Central State Store
+ * Naturals Bridal: Complete Central State Store
  * Offline-safe with wrapped localStorage try/catch.
  */
 window.NaturalsApp = window.NaturalsApp || {};
 
 (function() {
-  const STORAGE_KEY = "naturals_bridal_demo_state_v1";
+  const STORAGE_KEY = "naturals_bridal_demo_state_v2";
 
   const defaultState = {
     role: "bride", // 'bride' | 'artist' | 'hub' | 'hq'
-    brideScreen: "discover", // 'discover', 'plan', 'looks', 'price', 'hub', 'trial', 'team', 'day', 'proof'
+    brideScreen: "discover", // 12 screens: 'discover', 'plan', 'looks', 'price', 'hub', 'book-trial', 'trial-report', 'team', 'pay', 'day', 'backup-activated', 'review'
     
     // Bride Planner Configuration
     plan: {
@@ -31,13 +31,27 @@ window.NaturalsApp = window.NaturalsApp || {};
       patchTest: true,
       skinTone: 2, // 1 to 5
       skinType: "Sensitive",
+      allergies: "Slight sensitivity to synthetic fragrances",
       lookPreference: "Natural",
+      refPhotos: ["Traditional Muhurat Look", "Kanjeevaram Pleat", "Pastel Floral Bun"],
+      refPhotosUploaded: [true, true, false],
       isPriceLocked: false,
       lockedTotal: 0,
       chosenHubId: "hub-chennai-1",
       chosenSlot: "10:30 AM Tomorrow",
+      trialUpiId: "bride@okhdfcbank",
+      trialPaymentDone: false,
       trialShadeCode: "NAT-O3 Fair Warm",
-      trialStatus: "logged" // 'none', 'booked', 'logged'
+      trialStatus: "logged", // 'none', 'booked', 'logged', 'adjusted'
+      trialAdjustmentNote: "",
+      contractAgreement: {
+        writtenScope: true,
+        lateRule: true,
+        cancelRule: true,
+        reschedulePilot: true
+      },
+      contractPaid: false,
+      receiptNumber: "NAT-2026-CN-8821"
     },
 
     // Wedding Day Live Timeline
@@ -45,15 +59,42 @@ window.NaturalsApp = window.NaturalsApp || {};
       currentStep: 2,
       incident: "none", // 'none' | 'late-alert' | 'backup-dispatched' | 'resolved'
       backupEta: 20,
-      isAutoPlaying: false
+      isAutoPlaying: false,
+      deskCallActive: false
     },
+
+    // Communication / Chat Drawer
+    chat: {
+      isOpen: false,
+      messages: []
+    },
+
+    // Review & Proof Submission
+    reviewForm: {
+      lookedLikeMe: 5,
+      teamOnTime: 5,
+      priceMatched: 5,
+      text: "Ananya matched the trial look to the exact pin. Zero price creep on morning-of.",
+      unfilteredPhotos: ["Ceremony Close-up", "Stage Flash Check"],
+      posted: false
+    },
+
+    // User-submitted and Sample Proof Wall
+    proofWall: [],
 
     // Artist OS
     artist: {
       activeTab: "new",
       capacityUsed: 1,
       capacityTotal: 2,
-      bookingAccepted: false
+      bookingAccepted: false,
+      declineModal: false,
+      declineReason: ""
+    },
+
+    // Hub Owner Portal
+    hub: {
+      filter: "all" // 'all' | 'slots' | 'distance'
     },
 
     // HQ Control Room
@@ -76,7 +117,14 @@ window.NaturalsApp = window.NaturalsApp || {};
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        return Object.assign({}, defaultState, JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        return Object.assign({}, defaultState, parsed, {
+          plan: Object.assign({}, defaultState.plan, parsed.plan || {}),
+          timeline: Object.assign({}, defaultState.timeline, parsed.timeline || {}),
+          artist: Object.assign({}, defaultState.artist, parsed.artist || {}),
+          hq: Object.assign({}, defaultState.hq, parsed.hq || {}),
+          tour: Object.assign({}, defaultState.tour, parsed.tour || {})
+        });
       }
     } catch (e) {
       console.warn("Could not read from localStorage, using in-memory state:", e);
@@ -115,6 +163,12 @@ window.NaturalsApp = window.NaturalsApp || {};
       listeners.forEach(function(fn) { fn(currentState); });
     },
 
+    updateReviewForm: function(reviewUpdates) {
+      currentState.reviewForm = Object.assign({}, currentState.reviewForm, reviewUpdates);
+      saveState();
+      listeners.forEach(function(fn) { fn(currentState); });
+    },
+
     subscribe: function(fn) {
       listeners.push(fn);
       return function() {
@@ -139,10 +193,11 @@ window.NaturalsApp = window.NaturalsApp || {};
       } else if (name === "trial-done") {
         this.setState({
           role: "bride",
-          brideScreen: "price",
+          brideScreen: "trial-report",
           plan: Object.assign({}, currentState.plan, {
             isPriceLocked: true,
-            trialStatus: "logged"
+            trialStatus: "logged",
+            trialPaymentDone: true
           })
         });
         window.NaturalsApp.showToast("Scenario loaded: Mid-journey (Trial Done)");
@@ -154,7 +209,8 @@ window.NaturalsApp = window.NaturalsApp || {};
             currentStep: 2,
             incident: "none",
             backupEta: 20,
-            isAutoPlaying: false
+            isAutoPlaying: false,
+            deskCallActive: false
           }
         });
         window.NaturalsApp.showToast("Scenario loaded: Wedding Day Live");

@@ -1,5 +1,5 @@
 /**
- * Naturals Bridal: Artist OS View Renderer
+ * Naturals Bridal: Complete Artist OS View Renderer
  */
 window.NaturalsApp = window.NaturalsApp || {};
 
@@ -7,6 +7,7 @@ window.NaturalsApp = window.NaturalsApp || {};
   function renderArtistScreen(state) {
     const artist = state.artist;
     const tab = artist.activeTab || "new";
+    const isIncidentActive = state.timeline.incident !== "none";
 
     let html = `
       <div class="artist-screen">
@@ -18,6 +19,19 @@ window.NaturalsApp = window.NaturalsApp || {};
           <h2 class="screen-title">Bridal Schedule & Capacity</h2>
           <p class="screen-subtitle">Naturals Academy Certified Master Artist</p>
         </div>
+
+        <!-- Cross-Role Standby Incident Alert -->
+        ${isIncidentActive ? `
+          <div class="card" style="background: var(--amber-light); border: 2px solid var(--amber); padding: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong style="color: #8C4700; font-size: 12px;">⚠️ Standby Cover Activated</strong>
+              <span class="pill pill-armed">DISPATCHED</span>
+            </div>
+            <p style="font-size: 11px; color: #79430B; margin-top: 4px;">
+              Central Desk dispatched standby artist Divya R. with NAT-O3 shade notes to cover arterial transit delay.
+            </p>
+          </div>
+        ` : ''}
 
         <!-- Peak-Date Capacity Bar -->
         <div class="capacity-meter-box">
@@ -34,7 +48,7 @@ window.NaturalsApp = window.NaturalsApp || {};
         <!-- Tab Pills -->
         <div class="tab-nav-pills">
           <button class="tab-nav-btn ${tab === 'new' ? 'active' : ''}" onclick="window.NaturalsApp.setArtistTab('new')">
-            New Requests (1)
+            New Requests (${artist.bookingAccepted ? '0' : '1'})
           </button>
           <button class="tab-nav-btn ${tab === 'confirmed' ? 'active' : ''}" onclick="window.NaturalsApp.setArtistTab('confirmed')">
             Confirmed (${artist.bookingAccepted ? '2' : '1'})
@@ -78,10 +92,22 @@ window.NaturalsApp = window.NaturalsApp || {};
                   No pay-to-play fees. Ranking comes directly from verified on-time ratings.
                 </div>
 
-                <div style="display: flex; gap: 8px;">
-                  <button class="btn btn-outline btn-sm" style="flex: 1;" onclick="window.NaturalsApp.declineArtistRequest()">Decline</button>
-                  <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="window.NaturalsApp.acceptArtistRequest()">Accept Booking</button>
-                </div>
+                ${artist.declineModal ? `
+                  <div style="background: var(--paper); border: 1px solid var(--border); padding: 10px; border-radius: var(--radius-sm); margin-bottom: 10px;">
+                    <label style="font-size: 11px; font-weight: 700; color: var(--deep); display: block; margin-bottom: 6px;">SELECT DECLINE REASON</label>
+                    <div class="chip-group" style="margin-bottom: 8px;">
+                      ${['Travel distance', 'Capacity cap reached', 'Schedule clash'].map(r => `
+                        <button class="chip ${artist.declineReason === r ? 'active' : ''}" style="font-size: 10px; padding: 4px 8px;" onclick="window.NaturalsApp.selectDeclineReason('${r}')">${r}</button>
+                      `).join('')}
+                    </div>
+                    <button class="btn btn-outline btn-block btn-sm" onclick="window.NaturalsApp.confirmDeclineRequest()">Submit Reason & Decline</button>
+                  </div>
+                ` : `
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline btn-sm" style="flex: 1;" onclick="window.NaturalsApp.openDeclineModal()">Decline</button>
+                    <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="window.NaturalsApp.acceptArtistRequest()">Accept Booking</button>
+                  </div>
+                `}
               </div>
             `}
           ` : ''}

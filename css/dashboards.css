@@ -249,6 +249,99 @@
   font-weight: 600;
 }
 
+/* Hub Owner Calendar & Tables */
+.month-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.cal-day-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--soft);
+  text-align: center;
+  padding: 4px;
+}
+
+.cal-day-cell {
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  padding: 8px 6px;
+  min-height: 48px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cal-day-cell.peak-date {
+  background: #FFF4E5;
+  border: 1px solid var(--amber);
+}
+
+.cal-day-cell.booked {
+  background: #E8FBF2;
+  border: 1px solid var(--green);
+}
+
+.cal-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.cal-badge.peak {
+  background: var(--amber);
+  color: #FFFFFF;
+}
+
+.cal-badge.full {
+  background: var(--green-dark);
+  color: #FFFFFF;
+}
+
+/* Artist Bench & Hub League Tables */
+.data-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #FFFFFF;
+}
+
+.data-table th {
+  background: var(--paper);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--soft);
+  font-size: 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.data-table tr:hover td {
+  background: #FAF6FC;
+}
+
 /* Artist OS View */
 .artist-screen {
   padding: 16px;

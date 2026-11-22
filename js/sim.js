@@ -17,10 +17,10 @@ window.NaturalsApp = window.NaturalsApp || {};
   function simulateLateLeadIncident() {
     const store = window.NaturalsApp.store;
     
-    // Switch to bride day screen if not there
+    // Switch to bride backup-activated screen
     store.setState({
       role: "bride",
-      brideScreen: "day"
+      brideScreen: "backup-activated"
     });
 
     // Step 1: Alert
@@ -41,25 +41,25 @@ window.NaturalsApp = window.NaturalsApp || {};
       announceAria("Central desk auto-dispatched standby artist Divya R. with pre-synced shade notes.");
       window.NaturalsApp.showToast("Central Desk dispatched standby artist Divya R.");
 
-      // Step 3: Fast countdown to arrival
+      // Step 3: Fast countdown to arrival (18m -> 12m -> 6m -> 0m)
       let eta = 18;
       if (countdownTimer) clearInterval(countdownTimer);
       countdownTimer = setInterval(function() {
-        eta -= 5;
+        eta -= 6;
         if (eta <= 0) {
           clearInterval(countdownTimer);
           store.updateTimeline({
             incident: "resolved",
             backupEta: 0
           });
-          announceAria("Standby artist arrived at venue with trial notes. Muhurat look underway on schedule.");
+          announceAria("Standby artist arrived at venue with trial notes (NAT-O3 Fair Warm). Muhurat look underway on schedule.");
           window.NaturalsApp.showToast("Backup arrived with trial notes! Status returned to GREEN.");
         } else {
           store.updateTimeline({ backupEta: eta });
         }
-      }, 900);
+      }, 800);
 
-    }, 1800);
+    }, 1500);
   }
 
   function playTheDay() {

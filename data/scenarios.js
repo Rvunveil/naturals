@@ -1,5 +1,6 @@
 /**
  * Guided Tour Steps & Preset Scenarios
+ * Maps directly to the 8 tour steps and 60-second talk tracks for judges.
  */
 window.NaturalsData = window.NaturalsData || {};
 
@@ -9,7 +10,7 @@ window.NaturalsData.tourSteps = [
     role: "bride",
     screen: "discover",
     title: "1. Discover: The Anti-Directory",
-    caption: "Brides don't need another directory with 'DM for pricing'. We give 5 concrete certainty promises upfront.",
+    caption: "Brides don't need another directory with opaque 'DM for pricing'. Naturals guarantees 5 certainty promises upfront without login or paywall.",
     target: "#tour-target-promises"
   },
   {
@@ -17,7 +18,7 @@ window.NaturalsData.tourSteps = [
     role: "bride",
     screen: "plan",
     title: "2. Build a Price: Scope-Based",
-    caption: "Toggle events and add family members. Pricing is transparent, standardized, and includes 18% GST.",
+    caption: "Configure event scope and guest counts. Rates calculate transparently in real-time with 18% GST included. What you see is what you pay.",
     target: "#tour-target-events"
   },
   {
@@ -25,15 +26,15 @@ window.NaturalsData.tourSteps = [
     role: "bride",
     screen: "price",
     title: "3. Lock It: Guaranteed in Writing",
-    caption: "Toggle 'Lock this price' to freeze the exact rate card. Downloadable scope contract eliminates morning-of price creep.",
+    caption: "Toggle 'Lock this price' to freeze the exact rate card. Generate a downloadable scope contract with signature lines to prevent morning-of price creep.",
     target: "#tour-target-lock"
   },
   {
     step: 4,
     role: "bride",
-    screen: "trial",
+    screen: "trial-report",
     title: "4. Trial: In a Naturals Chair",
-    caption: "Calibrated 5000K lighting in physical salons. Exact foundation shade (NAT-O3) logged to remove wedding day guesswork.",
+    caption: "Leverages 700+ physical salon chairs under 5000K calibrated lighting. Exact foundation shade (NAT-O3 Fair Warm) logged to eliminate wedding morning guesswork.",
     target: "#tour-target-trial"
   },
   {
@@ -41,15 +42,15 @@ window.NaturalsData.tourSteps = [
     role: "bride",
     screen: "team",
     title: "5. Coordinated Team & Named Backup",
-    caption: "Lead artist, draping specialist, and an ARMED standby artist just 3.8 km away with trial notes already synced.",
+    caption: "One coordinated unit: Lead Ananya, Hair Priya, Draping Ramya, Coordinator Sneha, and standby artist Divya R. (ARMED, 3.8 km away) with trial notes pre-synced.",
     target: "#tour-target-backup"
   },
   {
     step: 6,
     role: "bride",
-    screen: "day",
+    screen: "backup-activated",
     title: "6. Wedding Day & The Failure Case",
-    caption: "Click 'Simulate: lead is 30 min late' to see central desk auto-dispatch backup with an ETA countdown.",
+    caption: "The emotional centerpiece: lead is 30m late in traffic. Central desk auto-dispatches standby Divya with an ETA countdown, resolving back to green.",
     target: "#tour-target-timeline"
   },
   {
@@ -57,7 +58,7 @@ window.NaturalsData.tourSteps = [
     role: "bride",
     screen: "proof",
     title: "7. Proof Wall: Verified Weddings Only",
-    caption: "No paid influencer reviews. Only completed, paid contracts can review on 'Looked like me' and 'Price matched'.",
+    caption: "Zero influencer puffery. Only completed, paid contracts can post. Scored on 'Looked like me', 'Team on time', and 'Price matched'.",
     target: "#tour-target-reviews"
   },
   {
@@ -65,7 +66,7 @@ window.NaturalsData.tourSteps = [
     role: "hq",
     screen: "hq-dashboard",
     title: "8. HQ Control Room: 4 Go/Stop Gates",
-    caption: "Tranche-based capital release protects the balance sheet. Drag pilot weeks to see gates turn Green or hit STOP.",
+    caption: "Tranche-based capital release protects the balance sheet. Drag the 12-week pilot slider to test how gates govern the release of ₹3.0 Cr.",
     target: "#tour-target-gates"
   }
 ];

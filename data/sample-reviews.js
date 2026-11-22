@@ -16,7 +16,8 @@ window.NaturalsData.sampleReviews = [
       priceMatchedCard: 5.0
     },
     text: "Zero renegotiation on morning-of. Ananya matched the trial look to the exact pin. Having the written backup guarantee let my mother sleep calmly the night before.",
-    tag: "SAMPLE"
+    tag: "SAMPLE",
+    photosCount: 2
   },
   {
     id: "rev-2",
@@ -29,7 +30,8 @@ window.NaturalsData.sampleReviews = [
       priceMatchedCard: 5.0
     },
     text: "The salon chair trial made the whole difference. When the flash photography photo was checked, we altered the contour before the wedding day. Total certainty.",
-    tag: "SAMPLE"
+    tag: "SAMPLE",
+    photosCount: 2
   },
   {
     id: "rev-3",
@@ -42,6 +44,7 @@ window.NaturalsData.sampleReviews = [
       priceMatchedCard: 5.0
     },
     text: "We had 6 bridesmaids and the styling assistant team kept strictly to schedule. The final invoice was exactly ₹38,350 as locked in app.",
-    tag: "SAMPLE"
+    tag: "SAMPLE",
+    photosCount: 3
   }
 ];
