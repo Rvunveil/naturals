@@ -1,0 +1,311 @@
+/* Dashboards: Artist OS, Hub Owner, and Naturals HQ */
+
+/* Dashboard Layout Headers */
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashboard-title h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.dashboard-title p {
+  font-size: 14px;
+  color: var(--soft);
+}
+
+/* KPI Cards Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--deep);
+  margin: 6px 0;
+}
+
+.kpi-footnote {
+  font-size: 11px;
+  color: var(--soft);
+}
+
+/* 4 HQ Gates Cards */
+.gates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.gate-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.gate-card.gate-go {
+  border-left: 5px solid var(--green);
+}
+
+.gate-card.gate-watch {
+  border-left: 5px solid var(--amber);
+}
+
+.gate-card.gate-stop {
+  border-left: 5px solid var(--red);
+  background: #FFFDFD;
+}
+
+.gate-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.gate-metric-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.gate-current-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--deep);
+}
+
+/* Progress Bar */
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #ECE5EF;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.progress-bar-fill.fill-green {
+  background: var(--green);
+}
+.progress-bar-fill.fill-amber {
+  background: var(--amber);
+}
+.progress-bar-fill.fill-red {
+  background: var(--red);
+}
+
+.gate-thresholds {
+  font-size: 11px;
+  color: var(--soft);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Pilot Simulation Controls */
+.sim-slider-box {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.sim-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sim-slider-header h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.sim-range-input {
+  width: 100%;
+  height: 6px;
+  border-radius: 4px;
+  background: #D3C7D7;
+  accent-color: var(--purple);
+  cursor: pointer;
+}
+
+/* Scenario Bar Chart Box */
+.scenario-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.scenario-pills {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.scenario-pill-btn {
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--soft);
+}
+
+.scenario-pill-btn.active {
+  background: var(--deep);
+  color: #FFFFFF;
+  border-color: var(--deep);
+}
+
+.scenario-bar-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  height: 120px;
+  padding-top: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.scenario-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar-val-label {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.bar-rect {
+  width: 100%;
+  max-width: 50px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+}
+
+.bar-rect.positive {
+  background: var(--green);
+}
+.bar-rect.negative {
+  background: var(--red);
+}
+
+.bar-title {
+  font-size: 11px;
+  color: var(--soft);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* Artist OS View */
+.artist-screen {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.capacity-meter-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.tab-nav-pills {
+  display: flex;
+  background: #EFE9F3;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+}
+
+.tab-nav-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--soft);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.tab-nav-btn.active {
+  background: #FFFFFF;
+  color: var(--deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.request-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.request-scope-tag {
+  display: inline-block;
+  background: var(--lilac);
+  color: var(--deep);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}

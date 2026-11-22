@@ -1,0 +1,225 @@
+/* Presenter Panel & Guided Tour Styles */
+
+.presenter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(234, 220, 240, 0.15);
+}
+
+.presenter-title {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.presenter-close-btn {
+  background: none;
+  border: none;
+  color: #EADCF0;
+  cursor: pointer;
+  display: none;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  .presenter-close-btn {
+    display: block;
+  }
+}
+
+.presenter-section {
+  margin-bottom: 22px;
+}
+
+.presenter-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #B59FB8;
+  margin-bottom: 10px;
+}
+
+/* Role Switcher in Presenter Panel */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.role-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(234, 220, 240, 0.15);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  color: #EADCF0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.role-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.role-btn.active {
+  background: var(--purple);
+  border-color: var(--green);
+  color: #FFFFFF;
+}
+
+.role-btn small {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* Guided Tour Card */
+.tour-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 231, 133, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  position: relative;
+}
+
+.tour-step-badge {
+  display: inline-block;
+  background: rgba(0, 231, 133, 0.15);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.tour-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.tour-step-caption {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #DEC8E7;
+  margin-bottom: 14px;
+}
+
+.tour-nav-row {
+  display: flex;
+  gap: 8px;
+}
+
+.tour-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.tour-btn-prev {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.tour-btn-next {
+  background: var(--green);
+  color: #0B2B16;
+  font-weight: 700;
+}
+
+/* Simulation Controls in Presenter Panel */
+.sim-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(234, 220, 240, 0.15);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: #FAF6FB;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.sim-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(234, 220, 240, 0.3);
+}
+
+.sim-btn-danger {
+  border-color: rgba(179, 38, 30, 0.4);
+  color: #FFA59E;
+}
+.sim-btn-danger:hover {
+  background: rgba(179, 38, 30, 0.25);
+}
+
+/* Preset Scenarios */
+.scenario-selector {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(234, 220, 240, 0.2);
+  color: #FAF6FB;
+  font-size: 12px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.scenario-selector option {
+  background: #2E1038;
+  color: #FAF6FB;
+}
+
+/* Keyboard Shortcuts Box */
+.shortcuts-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 11px;
+  color: #C1ACC4;
+  line-height: 1.6;
+}
+
+.shortcuts-box kbd {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FAF6FB;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}

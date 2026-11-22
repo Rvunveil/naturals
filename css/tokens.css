@@ -1,0 +1,47 @@
+/* Naturals Bridal: Book Certainty Design Tokens */
+:root {
+  /* Brand Palette */
+  --plum: #2E1038;
+  --deep: #4B2157;
+  --purple: #7E4798;
+  --lilac: #EADCF0;
+  --paper: #FAF6FB;
+  --ink: #2A1633;
+  --soft: #5B4663;
+  --border: #E5DBE8;
+  --card-bg: #FFFFFF;
+
+  /* Semantic Accents */
+  --green: #00E785;
+  --green-dark: #009957;
+  --green-light: #E6FBF2;
+  --amber: #C8731A;
+  --amber-light: #FDF5EB;
+  --red: #B3261E;
+  --red-light: #FBEBEA;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 3px rgba(42, 22, 51, 0.08);
+  --shadow-md: 0 4px 12px rgba(42, 22, 51, 0.08), 0 1px 3px rgba(42, 22, 51, 0.04);
+  --shadow-lg: 0 12px 32px rgba(42, 22, 51, 0.12), 0 2px 6px rgba(42, 22, 51, 0.04);
+  --shadow-phone: 0 24px 64px rgba(46, 16, 56, 0.35), 0 4px 16px rgba(46, 16, 56, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 250ms ease-out;
+
+  /* Frame Dimensions */
+  --phone-width: 390px;
+  --phone-height: 844px;
+  --presenter-width: 360px;
+}

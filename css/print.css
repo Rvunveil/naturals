@@ -1,0 +1,81 @@
+/* Print Styles for Download Scope as PDF */
+
+@media print {
+  /* Hide UI elements not meant for the contract PDF */
+  .presenter-panel,
+  .floating-presenter-btn,
+  .footer-ribbon,
+  .phone-island,
+  .phone-status-bar,
+  .bottom-nav,
+  .btn,
+  .stepper,
+  .toggle-switch,
+  .modal-overlay,
+  .toast-msg {
+    display: none !important;
+  }
+
+  body, html {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+    overflow: visible !important;
+  }
+
+  #app-shell {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .stage-area {
+    background: #FFFFFF !important;
+    padding: 0 !important;
+  }
+
+  .phone-frame {
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #FFFFFF !important;
+  }
+
+  .phone-screen {
+    overflow: visible !important;
+    background: #FFFFFF !important;
+  }
+
+  .price-hero-card {
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .print-header {
+    display: block !important;
+    border-bottom: 2px solid #2E1038;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .print-header h1 {
+    font-size: 18pt;
+    color: #2E1038;
+  }
+
+  .print-footer-signoff {
+    display: block !important;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #CCCCCC;
+    page-break-inside: avoid;
+  }
+}
+
+.print-header,
+.print-footer-signoff {
+  display: none;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Naturals Bridal: Book Certainty — Interactive Case Prototype</title>
+  <meta name="description" content="Naturals Bridal: Book Certainty. Interactive clickable prototype for BSmart x Naturals NxtGen Innovators Challenge 2026.">
+
+  <!-- Typography: Inter with system fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/dashboards.css">
+  <link rel="stylesheet" href="css/presenter.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+
+  <!-- Screen Reader Accessible Live Region -->
+  <div id="aria-live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main App Shell -->
+  <div id="app-shell">
+    
+    <!-- Stage Area -->
+    <main class="stage-area">
+      
+      <!-- Phone Mockup Container (Bride & Artist Roles) -->
+      <div class="phone-frame" id="phone-container">
+        <!-- Dynamic Island -->
+        <div class="phone-island">
+          <div class="island-camera"></div>
+          <div class="island-sensor"></div>
+        </div>
+
+        <!-- Phone Status Bar -->
+        <div class="phone-status-bar">
+          <span>09:41</span>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="currentColor"><path d="M0 6h2v4H0zm3-2h2v6H3zm3-2h2v8H6zm3-2h2v10H9zm3 0h2v10h-2z"/></svg>
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="1" width="12" height="8" rx="2"/><path d="M14 4v2" fill="currentColor"/></svg>
+          </div>
+        </div>
+
+        <!-- Phone Screen Content (Dynamic) -->
+        <div class="phone-screen" id="phone-screen-content">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Desktop Dashboard Container (Hub Owner & Naturals HQ Roles) -->
+      <div id="dashboard-container" style="display: none; width: 100%;">
+        <!-- Rendered via JS -->
+      </div>
+
+    </main>
+
+    <!-- Presenter Side-Panel (Desktop sticky) -->
+    <aside class="presenter-panel" id="presenter-panel">
+      <!-- Rendered via js/presenter.js -->
+    </aside>
+
+  </div>
+
+  <!-- Floating Presenter Toggle Button (Mobile / Narrow Screens) -->
+  <button class="floating-presenter-btn" id="presenter-fab" onclick="window.NaturalsApp.togglePresenterPanel()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+    Presenter Mode (P)
+  </button>
+
+  <!-- Persistent Disclaimer Footer Ribbon -->
+  <footer class="footer-ribbon">
+    <div>
+      <strong>BSmart x Naturals 2026</strong>
+      <span> • Prototype with illustrative data. Not a live product.</span>
+    </div>
+    <div class="footer-ribbon-actions">
+      <button class="footer-link-btn" onclick="window.NaturalsApp.showAboutModal()">About this prototype</button>
+      <button class="footer-link-btn" onclick="window.NaturalsApp.store.resetDemo()">Reset demo (R)</button>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Element -->
+  <div class="toast-msg" id="app-toast">Notification</div>
+
+  <!-- Assumptions & Credibility Modal Drawer -->
+  <div class="modal-overlay" id="about-modal" onclick="if(event.target === this) window.NaturalsApp.closeAboutModal()">
+    <div class="modal-sheet">
+      <button class="modal-close-btn" onclick="window.NaturalsApp.closeAboutModal()">✕</button>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+        <span class="brand-text">NATURALS BRIDAL</span>
+        <span class="pill pill-done">CASE COMPETITION DEMO</span>
+      </div>
+      <h3 style="font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 16px;">About This Prototype</h3>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; font-size: 13px; line-height: 1.6; color: var(--ink);">
+        <div>
+          <h4 style="font-weight: 700; color: var(--deep); margin-bottom: 2px;">1. What This Is</h4>
+          <p>A clickable HTML/CSS/JS prototype illustrating the <strong>"Book Certainty"</strong> strategic proposition for the BSmart x Naturals NxtGen Innovators Challenge 2026 (Case: <em>"How can Naturals dominate the bridal grooming market"</em>).</p>
+        </div>
+
+        <div>
+          <h4 style="font-weight: 700; color: var(--deep); margin-bottom: 2px;">2. What Is Illustrative</h4>
+          <p>All prices, service rate cards, customer ratings, franchisee contribution estimates (~₹4.5 lakh/hub), gate thresholds, and Year-3 EBITDA financial figures are illustrative strategic model outputs designed to validate mechanics, not historical financials.</p>
+        </div>
+
+        <div>
+          <h4 style="font-weight: 700; color: var(--deep); margin-bottom: 2px;">3. What It Proves</h4>
+          <p>The operational logic of replacing freelance discovery with five ironclad certainty promises: transparent price by scope, calibrated salon chair trial, one coordinated team, named standby backup with automatic dispatch, and proof from verified completed weddings.</p>
+        </div>
+
+        <div>
+          <h4 style="font-weight: 700; color: var(--deep); margin-bottom: 2px;">4. What the Pilot Would Test</h4>
+          <p>A proposed 12-week pilot across <strong>40 certified hubs</strong> and <strong>300 artists</strong> in Chennai and Coimbatore, backed by ₹3.0 Cr released in tranches governed by four quantitative Go/Stop gates.</p>
+        </div>
+
+        <div style="background: var(--paper); padding: 12px; border-radius: var(--radius-md); border-left: 3px solid var(--purple);">
+          <strong style="color: var(--deep);">AI-Use Disclosure:</strong>
+          <span style="display: block; font-size: 12px; color: var(--soft); margin-top: 2px;">In compliance with challenge rules: AI tools were used for code generation, architectural planning, and verification of this prototype.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vanilla Scripts in Dependency Order (Zero CORS restrictions on file://) -->
+  <script src="data/rate-card.js"></script>
+  <script src="data/hubs.js"></script>
+  <script src="data/artists.js"></script>
+  <script src="data/sample-reviews.js"></script>
+  <script src="data/gates.js"></script>
+  <script src="data/scenarios.js"></script>
+
+  <script src="js/state.js"></script>
+  <script src="js/price.js"></script>
+  <script src="js/sim.js"></script>
+  <script src="js/presenter.js"></script>
+
+  <script src="js/render-bride.js"></script>
+  <script src="js/render-artist.js"></script>
+  <script src="js/render-dashboards.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
